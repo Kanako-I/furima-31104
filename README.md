@@ -8,7 +8,7 @@
 | last_name_katakana   | string     | null: false                    |
 | first_name_katakana  | string     | null: false                    |
 | date_of_birth        | date       | null: false                    |
-| email                | string     | null: false                    |
+| email                | string     | null: false, unique: true      |
 
 ### Association
 has_many :items
