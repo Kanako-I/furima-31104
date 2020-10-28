@@ -52,7 +52,7 @@ belongs_to :user
 | prefecture_id | integer    | null: false                    |
 | town          | string     | null: false                    |
 | town_number   | string     | null: false                    |
-| building      | string     | null: false                    |
+| building      | string     |                                |
 | phone_number  | string     | null: false                    |
 | purchase      | reference  | null: false, foreign_key: true |
 
