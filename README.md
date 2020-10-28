@@ -1,18 +1,18 @@
 ## usersテーブル
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| password             | string     | null: false                    |
+| encrypted_password   | string     | null: false                    |
 | nickname             | string     | null: false, unique: true      |
-| last_name(kanji)     | string     | null: false                    |
-| first_name(kanji)    | string     | null: false                    | 
-| last_name(katakana)  | string     | null: false                    |
-| first_name(katakana) | string     | null: false                    |
-| Date_of_Birth        | date       | null: false                    |
+| last_name_kanji      | string     | null: false                    |
+| first_name_kanji     | string     | null: false                    | 
+| last_name_katakana   | string     | null: false                    |
+| first_name_katakana  | string     | null: false                    |
+| date_of_birth        | date       | null: false                    |
+| email                | string     | null: false                    |
 
 ### Association
 has_many :items
 has_many :purchases
-belong_to :address
 
 
 ##  itemsテーブル
@@ -20,40 +20,41 @@ belong_to :address
 | --------------------- | ---------- | ------------------------------ |
 | title                 | string     | null: false                    |
 | description           | text       | null: false                    |
-| posted.user_id        | references | null: false, foreign_key: true | 
+| user                  | references | null: false, foreign_key: true | 
 | price                 | integer    | null: false                    |
-| category_id           | text       | null: false                    |
-| item condition        | text       | null: false                    |
-| shipping.fee_id       | integer    | null: false                    |
-| shipped.prefecture_id | text       | null: false                    |
-| shipping.date_id      | date       | null: false                    |
+| category_id           | integer    | null: false                    |
+| item_condition_id     | integer    | null: false                    |
+| shipping_fee_id       | integer    | null: false                    |
+| shipped_prefecture_id | integer    | null: false                    |
+| shipping_date_id      | integer    | null: false                    |
 
 ### Association
 belongs_to :user
 has_one :purchase
 
 
-## purchaseテーブル
+## purchasesテーブル
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
-| purchased.user_id | references | null: false, foreign_key: true |
-| item_id           | references | null: false, foreign_key: true |
-| date_of_purchase  | date       | null: false                    |
+| user              | references | null: false, foreign_key: true |
+| item              | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :item
-belongs_to :address
+has_one :address
 belongs_to :user
 
 
-## addressテーブル
+## addressesテーブル
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_code   | integer    | null: false                    |
-| prefecture_id | text       | null: false                    |
-| town          | text       | null: false                    |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| town          | string     | null: false                    |
+| town_number   | string     | null: false                    |
+| building      | string     | null: false                    |
+| phone_number  | string     | null: false                    |
+| purchase      | reference  | null: false, foreign_key: true |
 
 ### Association
-belongs_to :user
 belongs_to :purchase
-belongs_to :item
