@@ -12,7 +12,7 @@ class DeviseCreateItems < ActiveRecord::Migration[6.0]
       t.integer :price,             null: false
       t.integer :category_id,       null: false
       t.integer :item_condition_id, null: false
-      t.integer :shipping_fee_id ,  null:false
+      t.integer :shipping_fee_id,   null:false
       t.integer :shipped_prefecture_id, null:false
       t.integer :shipping_date_id,  null: false
 
