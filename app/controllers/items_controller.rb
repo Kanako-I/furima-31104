@@ -3,8 +3,12 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @items = Item.new
   end
-  
+
+  def create
+  end
+
   private
 
   def message_params
