@@ -14,7 +14,7 @@ class User < ApplicationRecord
     validates :first_name_kanji
   end
   with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/} do
-    validates :last_name_katakanara
+    validates :last_name_katakana
     validates :first_name_katakana
   end
 
