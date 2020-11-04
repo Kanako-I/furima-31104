@@ -8,9 +8,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
-    Item.create(message_params) 
-    if @item.save 
+    @item = Item.new(message_params) 
+    if @item.save
       redirect_to root_path
     else
       render :new
