@@ -27,4 +27,8 @@ class Item < ApplicationRecord
     validates :shipped_prefecture_id
     validates :shipping_date_id
   end 
+
+  with_options numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999} do
+    validates :price
+  end
 end

@@ -2,8 +2,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
     ## Database authenticatable
-      t.string :email,              null: false
-      t.string :encrypted_password, null: false
       t.string :title,              null: false
       t.text :description,          null: false
       t.references :user,           null: false, foreign_key: true
@@ -15,8 +13,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :shipping_date_id,  null: false
  
       ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      # t.string   :reset_password_token
+      # t.datetime :reset_password_sent_at
  
       ## Rememberable
       t.datetime :remember_created_at

@@ -89,6 +89,18 @@ RSpec.describe Item, type: :model do
       @price.valid? 
       expect(@price.errors.full_messages).to include("Price can't be blank")
     end
+
+    it 'priceが300未満だと登録できない' do
+      @price.price = 200
+      @price.valid? 
+      expect(@price.errors.full_messages).to include("Price must be greater than or equal to 300")
+    end
+
+    it 'priceが300未満だと登録できない' do
+      @price.price = 10000000
+      @price.valid? 
+      expect(@price.errors.full_messages).to include("Price must be less than or equal to 9999999")
+    end
   end
 
 
@@ -99,6 +111,7 @@ RSpec.describe Item, type: :model do
       @shippedprefecture = FactoryBot.build(:item)
       @shippingdate = FactoryBot.build(:item)
       @shippingfee = FactoryBot.build(:item)
+      @price = FactoryBot.build(:item)
     end
 
     it 'categoryがid:1以外なら登録できる' do 
@@ -124,6 +137,16 @@ RSpec.describe Item, type: :model do
     it 'item_conditionがid:1以外なら登録できる' do 
       @itemcondition.item_condition_id = 2
       expect(@itemcondition).to be_valid
+    end
+
+    it 'priceが300以上だと登録できる' do
+      @price.price = 300
+      expect(@price).to be_valid
+    end
+
+    it 'priceが9999999以下だと登録できる' do
+      @price.price = 9999999
+      expect(@price).to be_valid
     end
   end
 end

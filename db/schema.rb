@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 2020_11_03_045512) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "encrypted_password", null: false
     t.string "title", null: false
     t.text "description", null: false
     t.bigint "user_id", null: false
@@ -45,8 +43,6 @@ ActiveRecord::Schema.define(version: 2020_11_03_045512) do
     t.integer "shipping_fee_id", null: false
     t.integer "shipped_prefecture_id", null: false
     t.integer "shipping_date_id", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
