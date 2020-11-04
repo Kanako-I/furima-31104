@@ -12,5 +12,3 @@ window.addEventListener('load', () => {
 });
 
 
-
-// 金額を入力した数値をpriceInputという変数に格納する
