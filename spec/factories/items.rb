@@ -8,8 +8,7 @@ FactoryBot.define do
     title                 { 'タイトル' }
     description           { '説明' }
     price                 { 1000 }
-  
+
     association :user
   end
 end
- 

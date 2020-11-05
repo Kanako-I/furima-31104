@@ -97,25 +97,25 @@ RSpec.describe User, type: :model do
     it 'last_name_kanjiは漢字でないと登録できないこと' do
       @user.last_name_kanji = 'いけだ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name kanji is invalid")
+      expect(@user.errors.full_messages).to include('Last name kanji is invalid')
     end
 
     it 'first_name_kanjiは漢字でないと登録できないこと' do
       @user.first_name_kanji = 'かなこ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name kanji is invalid")
+      expect(@user.errors.full_messages).to include('First name kanji is invalid')
     end
 
     it 'last_name_katakanaはカタカナでないと登録できないこと' do
       @user.last_name_katakana = 'いけだ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name katakana is invalid")
+      expect(@user.errors.full_messages).to include('Last name katakana is invalid')
     end
 
     it 'first_name_katakanaはカタカナでないと登録できないこと' do
       @user.first_name_katakana = 'かなこ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name katakana is invalid")
+      expect(@user.errors.full_messages).to include('First name katakana is invalid')
     end
   end
 
