@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_one :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
@@ -22,7 +23,7 @@ class Item < ApplicationRecord
 
   with_options numericality: { other_than: 1 } do
     validates :category_id
-    validates :item_condition_id
+    validates :item_condition_id  
     validates :shipping_fee_id
     validates :shipped_prefecture_id
     validates :shipping_date_id
