@@ -1,6 +1,8 @@
 class Form
   include ActiveModel::Model
-  attr_accessor :postal_code, :shipped_prefecture_id, :town, :town_number, :building, :phone_number, :order, :user_id, :item_id
+  attr_accessor :postal_code, :shipped_prefecture_id, :town, :town_number, :building, :phone_number, :order, :user_id, :item_id, :token
+
+  validates :token, presence: true
 
   # ここにバリデーションの処理を書く
   # orderモデルのバリデーション
