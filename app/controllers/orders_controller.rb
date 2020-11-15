@@ -42,8 +42,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index_sold
-    @item_buyer = Item.new(@form)
-    if @item_buyer.present?
+    if @item.order.present?
       redirect_to root_path
     end
   end
