@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:create, :index]
-  before_action :move_to_index_sold, only: [:create, :index]
+  before_action :item_buyer, only: [:create, :index]
 
   def index
     @form = Form.new
@@ -41,8 +41,9 @@ class OrdersController < ApplicationController
     redirect_to root_path unless user_signed_in? && @item.user_id != current_user.id
   end
 
-  def move_to_index_sold
-    if @item.order.present?
+  def item_buyer
+    @item_buyer = Item.new(@form)
+    if @item_buyer.present?
       redirect_to root_path
     end
   end
