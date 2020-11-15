@@ -37,7 +37,7 @@ RSpec.describe Form, type: :model do
     it '郵便番号にハイフンがないと登録できない' do
       @form.postal_code = '1111111'
       @form.valid?
-      expect(@form.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@form.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
 
     it '市町村が空だと登録できない' do
@@ -61,16 +61,16 @@ RSpec.describe Form, type: :model do
     it '電話番号にハイフンが入ると登録できない' do
       @form.phone_number = '-'
       @form.valid?
-      expect(@form.errors.full_messages).to include( "Phone number is invalid.")
+      expect(@form.errors.full_messages).to include('Phone number is invalid.')
     end
 
     it '電話番号が12桁以上だと登録できない' do
       @form.phone_number = '111111111111'
       @form.valid?
-      expect(@form.errors.full_messages).to include("Phone number is invalid.")
+      expect(@form.errors.full_messages).to include('Phone number is invalid.')
     end
 
-    it "tokenが空では登録できないこと" do
+    it 'tokenが空では登録できないこと' do
       @form.token = nil
       @form.valid?
       expect(@form.errors.full_messages).to include("Token can't be blank")
