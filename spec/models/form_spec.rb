@@ -1,18 +1,7 @@
 require 'rails_helper'
 RSpec.describe Form, type: :model do
   before do
-    @form = FactoryBot.build(:form)
-  end
-  context '購入画面挙動確認（正常確認）' do
-    it 'shipped_prefectureがid:1以外なら登録できる' do
-      @form.shipped_prefecture_id = 2
-      @form.valid?
-    end
-
-    it '電話番号が99999999999以下だと登録できる' do
-      @form.phone_number = '09099999999'
-      @form.valid?
-    end
+    @form = FactoryBot.build(:form) 
   end
 
   context '購入画面挙動確認（非正常確認）' do

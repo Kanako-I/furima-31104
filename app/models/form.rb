@@ -4,7 +4,6 @@ class Form
 
   validates :token, presence: true
 
-  # ここにバリデーションの処理を書く
   # orderモデルのバリデーション
   with_options presence: true do
     validates :user_id

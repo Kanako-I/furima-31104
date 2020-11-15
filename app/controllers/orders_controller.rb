@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:create, :index]
+  before_action :move_to_index_sold, only: [:create, :index]
 
   def index
     @form = Form.new
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # PAY.JPテスト秘密鍵
-    Payjp::Charge.create(
+    Payjp::Charge.create( 
       amount: @item.price, # 商品の値段
       card: address_params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
@@ -38,5 +39,12 @@ class OrdersController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless user_signed_in? && @item.user_id != current_user.id
+  end
+
+  def move_to_index_sold
+    @item_buyer = Item.new(@form)
+    if @item_buyer.present?
+      redirect_to root_path
+    end
   end
 end
