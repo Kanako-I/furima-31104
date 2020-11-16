@@ -4,6 +4,12 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
   context 'カテゴリー挙動確認（非正常確認）' do
+    it '画像が空だと登録できない' do
+      @item.image = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Image can't be blank")
+    end
+
     it 'categoryが空だと登録できない' do
       @item.category_id = ''
       @item.valid?

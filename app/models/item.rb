@@ -19,6 +19,7 @@ class Item < ApplicationRecord
     validates :shipping_fee_id
     validates :shipped_prefecture_id
     validates :shipping_date_id
+    validates :image
   end
 
   with_options numericality: { other_than: 1 } do
