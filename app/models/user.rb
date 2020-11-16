@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :date_of_birth
   end
 
-  with_options presence: true, format: { with: /\A[一-龥]+\z/ } do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
     validates :last_name_kanji
     validates :first_name_kanji
   end

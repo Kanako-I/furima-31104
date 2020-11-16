@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     @form = Form.new(address_params)
     if @form.valid?
       pay_item
+      @form.save
       redirect_to root_path
     else
       render action: :index
@@ -42,8 +43,7 @@ class OrdersController < ApplicationController
   end
 
   def item_buyer
-    @item_buyer = Item.new(@form)
-    if @item_buyer.present?
+    if @item.order.present?
       redirect_to root_path
     end
   end
